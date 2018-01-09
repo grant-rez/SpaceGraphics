@@ -164,15 +164,10 @@ void interpolate(int32_t i0, int32_t i1, double d0, double d1, std::vector<doubl
 	out.reserve(i1 - i0);
 
 	// setup starting variables
-	double slope = (i1 - i0 != 0) ? ((d1 - d0) / static_cast<double>(i1 - i0)) : (0);
-	double current = d0;
+	double m = (i1 - i0 != 0) ? ((d1 - d0) / static_cast<double>(i1 - i0)) : (0);
 
-	// push back first value
-	out.push_back(current);
-
-	for (int i = 1; i <= i1 - i0; ++i)
+	for (int i = 0; i <= i1 - i0; ++i)
 	{
-		current += slope;
-		out.push_back(current);
+		out.push_back(d0 + (m * i));
 	}
 }
