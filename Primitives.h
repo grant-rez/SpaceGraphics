@@ -28,7 +28,7 @@ struct Cube
 
 struct Color
 {
-	uint32_t r, g, b;
+	uint8_t r, g, b;
 };
 
 struct Vec3
@@ -36,9 +36,9 @@ struct Vec3
 	double i, j, k;
 };
 
-const Color RED = { 256, 0, 0 };
-const Color GREEN = { 0, 256, 0 };
-const Color BLUE = { 0, 0, 256 };
+const Color RED = { 255, 0, 0 };
+const Color GREEN = { 0, 255, 0 };
+const Color BLUE = { 0, 0, 255 };
 
 const Cube RIGHTDOWNCUBE = {
 	Point3D{ 0.25, -0.25, 2.0 },

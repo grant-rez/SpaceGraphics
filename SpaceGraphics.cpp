@@ -2,7 +2,7 @@
 
 void SpaceGraphics::print(std::string path)
 {
-	std::ofstream out(path);
+	std::ofstream out(path, std::ofstream::binary);
 	out << "P3 " << canvas.width << " " << canvas.height << " 256\n";
 
 	
@@ -12,7 +12,10 @@ void SpaceGraphics::print(std::string path)
 		{
 			Point2D point = { static_cast<double>(x), static_cast<double>(y) };
 			Color col = canvas.getPixel(point, true);
-			out << col.r << " " << col.g << " " << col.b << "\n";
+			uint32_t r = col.r; //<uint32_t>(col.r);
+			uint32_t g = col.g; //static_cast<uint32_t>(col.g);
+			uint32_t b = col.b; // <uint32_t>(col.b);
+			out << r << " " << g << " " << b << " ";
 		}
 		out << "\n";
 	}
@@ -122,11 +125,10 @@ void SpaceGraphics::Draw(Cube cube, Color color)
 	
 	Draw(Triangle3D{ cube.p3, cube.p2, cube.p6 }, GREEN);
 	Draw(Triangle3D{ cube.p3, cube.p6, cube.p7 }, GREEN);
-	Draw(Triangle3D{ cube.p0, cube.p3, cube.p4 }, BLUE);
-	Draw(Triangle3D{ cube.p3, cube.p4, cube.p7 }, BLUE);
 	Draw(Triangle3D{ cube.p0, cube.p1, cube.p2 }, RED);
 	Draw(Triangle3D{ cube.p0, cube.p2, cube.p3 }, RED);
-	
+	Draw(Triangle3D{ cube.p0, cube.p3, cube.p4 }, BLUE);
+	Draw(Triangle3D{ cube.p3, cube.p4, cube.p7 }, BLUE);	
 	Draw(Triangle3D{ cube.p1, cube.p2, cube.p5 }, BLUE);
 	Draw(Triangle3D{ cube.p2, cube.p5, cube.p6 }, BLUE);
 	Draw(Triangle3D{ cube.p4, cube.p5, cube.p6 }, RED);
