@@ -2,9 +2,10 @@
 
 void SpaceGraphics::print(std::string path)
 {
+	std::ostringstream oss;
 	std::ofstream out(path, std::ofstream::binary);
-	out << "P3 " << canvas.width << " " << canvas.height << " 256\n";
 
+	oss << "P3 " << canvas.width << " " << canvas.height << " 256\n";
 	
 	for (uint32_t y = 0; y < canvas.height; ++y)
 	{
@@ -12,14 +13,14 @@ void SpaceGraphics::print(std::string path)
 		{
 			Point2D point = { static_cast<double>(x), static_cast<double>(y) };
 			Color col = canvas.getPixel(point, true);
-			uint32_t r = col.r; //<uint32_t>(col.r);
-			uint32_t g = col.g; //static_cast<uint32_t>(col.g);
-			uint32_t b = col.b; // <uint32_t>(col.b);
-			out << r << " " << g << " " << b << " ";
+			uint32_t r = col.r; 
+			uint32_t g = col.g;
+			uint32_t b = col.b; 
+			oss << r << " " << g << " " << b << " ";
 		}
-		out << "\n";
+		oss << "\n";
 	}
-	
+	out << oss.str();
 }
 
 // Triangle 3D is in World Space

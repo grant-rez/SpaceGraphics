@@ -6,10 +6,10 @@
 #include <fstream>
 #include <algorithm>
 #include <vector>
+#include <sstream>
 
-#include "Canvas.h"
+#include "SceneObjects.h"
 #include "Primitives.h"
-#include "Viewport.h"
 
 
 class SpaceGraphics

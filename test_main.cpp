@@ -2,9 +2,9 @@
 
 int main()
 {
-	SpaceGraphics sg(1000, 1000, Color{ 250,250,250 });
+	SpaceGraphics sg(1000, 1000, DKGRAY);
 
-	sg.Draw(RIGHTDOWNCUBE, RED);
+	sg.Draw(RIGHTDOWNCUBE + Vec3{ 3, 4, 10}, RED);
 
 	sg.print("output.ppm");
 }
