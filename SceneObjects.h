@@ -64,6 +64,19 @@ class Camera
 public:
 	Camera(Vec3 pos_, Vec3 dir_) : pos(pos_), dir(dir_) { }
 
+	Camera() : pos(Vec3{ 0,0,0 }), dir(Vec3{ 0,0,0 }) { }
+
+	void setPos(Vec3 pos_)
+	{
+		pos = pos_;
+	}
+
+	Point3D transform(Point3D point) const 
+	{
+		return point - pos;
+	}
+
+
 private:
 	Vec3 pos;
 	Vec3 dir;

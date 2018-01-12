@@ -22,6 +22,14 @@ struct Point3D
 		double k = z + trans.k;
 		return Point3D{ i, j, k };
 	}
+
+	Point3D operator-(Vec3 trans) const
+	{
+		double i = x - trans.i;
+		double j = y - trans.j;
+		double k = z - trans.k;
+		return Point3D{ i, j, k };
+	}
 };
 
 struct Triangle2D

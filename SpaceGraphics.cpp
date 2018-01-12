@@ -23,11 +23,20 @@ void SpaceGraphics::print(std::string path)
 	out << oss.str();
 }
 
+void SpaceGraphics::setCameraPos(Vec3 pos)
+{
+	camera.setPos(pos);
+}
+
 // Triangle 3D is in World Space
 // Triangle 2D is in Canvas Space
 // CURRENTLY JUST DRAWS A 2D Triangle
 void SpaceGraphics::Draw(Triangle3D triangle, Color color)
 {
+	triangle.p0 = camera.transform(triangle.p0);
+	triangle.p1 = camera.transform(triangle.p1);
+	triangle.p2 = camera.transform(triangle.p2);
+
 	Triangle2D tri2D = {
 		viewport.MapToViewport(triangle.p0, canvas.width, canvas.height),
 		viewport.MapToViewport(triangle.p1, canvas.width, canvas.height),

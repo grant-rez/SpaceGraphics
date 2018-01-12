@@ -19,6 +19,8 @@ public:
 
 	void print(std::string path);
 
+	void setCameraPos(Vec3 pos);
+
 	void Draw(Cube cube, Color color);
 
 	void Draw(Triangle3D triangle, Color color);
@@ -29,6 +31,7 @@ private:
 	
 	Canvas canvas;
 	Viewport viewport;
+	Camera camera;
 };
 
 void interpolate(int32_t i0, int32_t i1, int32_t d0, int32_t d1, std::vector<int32_t> &out);
